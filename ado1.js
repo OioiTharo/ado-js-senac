@@ -6,7 +6,7 @@
  * @return {Array} Os nomes dos alunos que fizeram este exercício.
  */
 function nomesDosAlunos() {
-    return [ "João da Silva", "Maria da Silva" ];
+    return [ "Thais Rodrigues Andrade", "Giovanna Ronqui Bonavolontá", "Giovanna Barros de Oliveira"];
 }
 
 // Implemente as funções abaixo, conforme pede o enunciado.
@@ -48,7 +48,22 @@ function maiorDosDoisSimplificado(a, b) {
  * @return {number} O resultado da operação.
  */
 function maiorDosQuatro(a, b, c, d) {
-    naoFizIssoAinda();
+    if(a>b & a>c & a>d){
+        return a;
+    }
+    else {
+        if(b>a & b>c & b>d){
+            return b;
+        }
+        else{
+            if(c>b & c>b & c>d){
+                return c;
+            }
+            else{
+                return d;
+            }
+        }
+    }
 }
 
 // EXERCÍCIO 2.
@@ -80,7 +95,52 @@ function maiorDosQuatro(a, b, c, d) {
  * @return {number} O resultado da operação.
  */
 function operacoesBasicas(operacao, numero1, numero2) {
-    naoFizIssoAinda();
+    if (operacao == "A"){
+        return numero1 + numero2;
+    }
+    else{
+        if (operacao == "S"){
+            return numero1 - numero2;
+        }
+        else{
+            if (operacao == "M"){
+                return numero1*numero2;
+            }
+            else{
+                if(operacao == "D"){
+                    if(numero2>0){
+                        return numero1/numero2; 
+                    }
+                    else{
+                        return NaN;
+                    }
+                }
+                else{
+                    if(operacao == "P"){
+                        if(numero2 > 0 ){
+                            return numero1**numero2; 
+                        }
+                        else{
+                            if(numero2 == 0 & numero1 > 0){
+                                return 1; 
+                            }
+                            else{
+                                if(numero1 == 0 & numero2 > 0){
+                                    return 0;
+                                }
+                                else{
+                                    return NaN;
+                                }
+                            }
+                        }
+                    }
+                    else{
+                        return undefined;
+                    }
+                }    
+            }
+        }
+    }
 }
 
 // EXERCÍCIO 3.
@@ -101,7 +161,17 @@ function operacoesBasicas(operacao, numero1, numero2) {
  * @returns {String} A mensagem com o resultado da comparação.
  */
 function comparadorBasico(elemento1, elemento2) {
-    naoFizIssoAinda();
+    if (typeof elemento1 == elemento2){
+        return "São iguais";
+    }
+    else{
+        if((parseFloat(elemento1)) == elemento2 || (parseFloat(elemento2)) == elemento12 ){
+            return "São equivalentes";
+        }
+        else{
+            return "São diferentes";
+        }
+    }
 }
 
 // EXERCÍCIO 4.
