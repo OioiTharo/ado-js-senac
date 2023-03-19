@@ -166,17 +166,7 @@ function operacoesBasicas(operacao, numero1, numero2) {
  * @return {string} A mensagem com o resultado da comparação.
  */
 function comparadorBasico(elemento1, elemento2) {
-    if (typeof elemento1 == elemento2){
-        return "São iguais";
-    }
-    else{
-        if((parseFloat(elemento1)) == elemento2 || (parseFloat(elemento2)) == elemento12 ){
-            return "São equivalentes";
-        }
-        else{
-            return "São diferentes";
-        }
-    }
+
 }
 
 // EXERCÍCIO 4.
@@ -193,7 +183,13 @@ function comparadorBasico(elemento1, elemento2) {
  * @return {string} String com o primeiro nome apenas.
  */
 function primeiroNome(nomeCompleto) {
-    naoFizIssoAinda();
+    
+	if(nomeCompleto.includes(' ')){
+		return nomeCompleto.substring(0,nomeCompleto.indexOf(' '));
+	}
+	else{
+		return nomeCompleto.substring(0, nomeCompleto.length);
+	}
 }
 
 // EXERCÍCIO 5.
@@ -211,7 +207,14 @@ function primeiroNome(nomeCompleto) {
  * @return {string} String com o primeiro nome conforme dado e o segundo nome abreviado.
  */
 function abreviadorNomes(nomeCompleto) {
-    naoFizIssoAinda();
+   
+	if(nomeCompleto.includes(' ')){
+		return nomeCompleto.substring(0,nomeCompleto.indexOf(' ')+2)+".";
+	}
+	else{
+		return nomeCompleto.substring(0, nomeCompleto.length);
+	}
+
 }
 
 // EXERCÍCIO 6.
