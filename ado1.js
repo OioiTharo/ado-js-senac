@@ -398,15 +398,13 @@ function calcularImc(pessoa) {
  * @return {string[]} Um array com as palavras da frase.
  */
 function obterPalavras(frase) {
-	const fraseLimpa = frase.trim();
+	const fraseLimpa = [];
 	
-	const palavras = fraseLimpa.split(' ');
-	if (frase == 0) {
-		return [];
+	const palavras = frase.split(' ');
+	for (const palavra of palavras) {
+		if (palavra !== "") fraseLimpa.push(palavra);
 	}
-	else{
-		return palavras;
-	}		
+	return fraseLimpa;		
 	
 }
 
@@ -528,16 +526,24 @@ function verificarTriangulo() {
     // Comece a mexer no código daqui para baixo.
     let texto1, texto2;
     try {
-        const a = lerNumero(naoFizIssoAinda(), naoFizIssoAinda());
-        const b = lerNumero(naoFizIssoAinda(), "Informe o número B corretamente.");
-        const c = lerNumero(naoFizIssoAinda(), naoFizIssoAinda());
-        texto1 = naoFizIssoAinda(a, b, c);
-        // Fazer algo com o texto2.
+        const a = lerNumero(document.getElementById("ladoA").value, {erro: "Informe o número A corretamente."});
+        const b = lerNumero(document.getElementById("ladoB").value, {erro: "Informe o número B corretamente."});
+		const c = lerNumero(document.getElementById("ladoC").value, {erro:"Informe o número C corretamente."});
+        texto1 = tipoTriangulo(a, b, c);
+		if (texto2 = areaTriangulo(a, b, c)==undefined){
+			texto2 = "";
+		}
+		else{
+			texto2 = areaTriangulo(a, b, c);
+		}
+		
     } catch (e) {
         texto1 = e.message;
-        // Fazer algo aqui.
+		texto2 = "";
     }
-    naoFizIssoAinda();
+	
+	document.getElementById("tipoTriangulo").value = texto1;
+	document.getElementById("areaTriangulo").value = texto2;
 }
 
 // EXERCÍCIO 18.
