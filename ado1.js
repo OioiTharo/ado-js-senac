@@ -166,17 +166,7 @@ function operacoesBasicas(operacao, numero1, numero2) {
  * @return {string} A mensagem com o resultado da comparação.
  */
 function comparadorBasico(elemento1, elemento2) {
-    if (typeof elemento1 == elemento2){
-        return "São iguais";
-    }
-    else{
-        if((parseFloat(elemento1)) == elemento2 || (parseFloat(elemento2)) == elemento12 ){
-            return "São equivalentes";
-        }
-        else{
-            return "São diferentes";
-        }
-    }
+    naoFizIssoAinda();
 }
 
 // EXERCÍCIO 4.
@@ -193,8 +183,15 @@ function comparadorBasico(elemento1, elemento2) {
  * @return {string} String com o primeiro nome apenas.
  */
 function primeiroNome(nomeCompleto) {
-    naoFizIssoAinda();
+    
+	if(nomeCompleto.includes(' ')){
+		return nomeCompleto.substring(0,nomeCompleto.indexOf(' '));
+	}
+	else{
+		return nomeCompleto.substring(0, nomeCompleto.length);
+	}
 }
+
 
 // EXERCÍCIO 5.
 /**
@@ -211,7 +208,14 @@ function primeiroNome(nomeCompleto) {
  * @return {string} String com o primeiro nome conforme dado e o segundo nome abreviado.
  */
 function abreviadorNomes(nomeCompleto) {
-    naoFizIssoAinda();
+   
+	if(nomeCompleto.includes(' ')){
+		return nomeCompleto.substring(0,nomeCompleto.indexOf(' ')+2)+".";
+	}
+	else{
+		return nomeCompleto.substring(0, nomeCompleto.length);
+	}
+
 }
 
 // EXERCÍCIO 6.
@@ -234,7 +238,7 @@ function abreviadorNomes(nomeCompleto) {
  * @return {boolean} Verdadeiro se a data for válida, falso em caso contrário.
  */
 function dataValida(data) {
-    naoFizIssoAinda();
+	naoFizIssoAinda();
 }
 
 // EXERCÍCIO 7.
@@ -257,7 +261,7 @@ function dataValida(data) {
  * @return {string} Data no formato "Dia de Nome-do-Mês-por-Extenso de Ano" ou "Data inválida".
  */
 function converteDataParaFormaCompleta(data) {
-    naoFizIssoAinda();
+	naoFizIssoAinda();
 }
 
 // EXERCÍCIO 8.
@@ -275,8 +279,16 @@ function converteDataParaFormaCompleta(data) {
  * @return {number} O somatório de valores pares entre os dois números, contando com eles.
  */
 function somadorPares(inicio, fim) {
-    naoFizIssoAinda();
+	
+	let soma = 0;
+	for (let i = inicio; i <= fim; i++) {
+		if (i % 2 == 0) {
+		  soma += i;
+		}
+	}
+	return soma;
 }
+
 
 // EXERCÍCIO 9.
 /**
@@ -286,8 +298,16 @@ function somadorPares(inicio, fim) {
  * @return {number|undefined} O menor valor do vetor ou undefined se o vetor estiver vazio.
  */
 function acharMenor(vetor) {
-    naoFizIssoAinda();
+	const min = Math.min(...vetor);
+	
+	if (vetor==0){
+		return undefined;
+	}
+	else{
+		return min;
+	}
 }
+
 
 // EXERCÍCIO 10.
 /**
@@ -297,8 +317,22 @@ function acharMenor(vetor) {
  * @return {number[]} O vetor contendo apenas números pares do original (ou vazio se não houver nenhum).
  */
 function acharPares(vetor) {
-    naoFizIssoAinda();
+	let vetorpar = [];
+	
+	if (vetor==0){
+		return [];
+	}
+	else{
+		for (let i=0;i<vetor.length;i++){
+			if(vetor[i]%2==0){
+				vetorpar.push(vetor[i]);
+			}
+		}
+		return vetorpar;
+	}
+    
 }
+
 
 // EXERCÍCIO 11.
 /**
@@ -323,8 +357,35 @@ function acharPares(vetor) {
  * @return {string} Estado do peso da pessoa.
  */
 function calcularImc(pessoa) {
-    naoFizIssoAinda();
+    let imc = (pessoa.peso) / ((pessoa.altura)*(pessoa.altura));
+	if(imc < 18.5){
+		return "Abaixo do peso";
+	}
+	else{
+		if(imc>=18.5 & imc<25){
+			return "Normal";
+		}
+		else{
+			if(imc>=25 & imc<30){
+				return "Excesso de peso";
+			}
+			else{
+				if(imc>=30 & imc<35){
+					return "Obesidade leve (Grau I)";
+				}
+				else{
+					if(imc>=35 & imc<40){
+						return "Obesidade severa (Grau II)";
+					}
+					else{
+						return "Obesidade mórbida (Grau III)";
+					}
+				}
+			}
+		}
+	}
 }
+
 
 // EXERCÍCIO 12.
 /**
@@ -337,7 +398,16 @@ function calcularImc(pessoa) {
  * @return {string[]} Um array com as palavras da frase.
  */
 function obterPalavras(frase) {
-    naoFizIssoAinda();
+	const fraseLimpa = frase.trim();
+	
+	const palavras = fraseLimpa.split(' ');
+	if (frase == 0) {
+		return [];
+	}
+	else{
+		return palavras;
+	}		
+	
 }
 
 // EXERCÍCIO 13.
@@ -359,7 +429,7 @@ function obterPalavras(frase) {
  * @return {string} O texto resultante da transformação com rot13.
  */
 function rot13(texto) {
-    naoFizIssoAinda();
+	return texto.replace(/[a-z]/gi, letter => String.fromCharCode(letter.charCodeAt(0) + (letter.toLowerCase() <= 'm' ? 13 : -13)));
 }
 
 // EXERCÍCIO 14.
@@ -372,7 +442,10 @@ function rot13(texto) {
  * 3. Colocar o resultado no segundo <textarea>.
  */
 function fazerRot13() {
-    naoFizIssoAinda();
+	let entra = document.getElementById("entra-rot13").value;
+	let saida = rot13(entra);
+
+	document.getElementById("sai-rot13").value = saida;
 }
 
 // EXERCÍCIO 15.
@@ -390,8 +463,24 @@ function fazerRot13() {
  * @return {string} O tipo de triângulo resultante.
  */
 function tipoTriangulo(a, b, c) {
-    naoFizIssoAinda();
+    if((a+b)<=c || (b+c)<=a || (a+c)<=b || a<=0 || b<=0 || c<=0){
+		return "Não é um triângulo";
+	}
+	else{
+		if(a==b && b==c && a==c){
+			return "Equilátero";
+		}
+		else{
+			if(a!=b && b!=c && a!=c){
+				return "Escaleno";
+			}
+			else{
+				return"Isósceles";
+			}
+		}
+	}
 }
+
 
 // EXERCÍCIO 16.
 /**
@@ -406,8 +495,16 @@ function tipoTriangulo(a, b, c) {
  * @return {number|undefined} A área do triângulo resultante ou undefined se não formar um triângulo.
  */
 function areaTriangulo(a, b, c) {
-    naoFizIssoAinda();
+    if((a+b)<=c || (b+c)<=a || (a+c)<=b || a<=0 || b<=0 || c<=0){
+		return undefined;
+	}
+	else{
+		let p = (a+b+c)/2;
+		let area =  Math.sqrt(p*(p-a)*(p-b)*(p-c)) ;
+		return area;
+	}
 }
+
 
 // EXERCÍCIO 17.
 /**
