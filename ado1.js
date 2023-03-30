@@ -646,7 +646,21 @@ function contarPalavras(frase) {
  * @return {number[]|undefined} Um array com as soluções reais ou undefined se não for uma equação de segundo grau.
  */
 function bhaskara(a, b, c) {
-    naoFizIssoAinda();
+    
+	if (a === 0) {
+		return undefined; 
+	}
+  
+	const triangulinho = Math.pow(b, 2) - 4 * a * c; 
+  
+	if (triangulinho < 0) {
+		return []; 
+	}
+  
+	const x1 = (-b + Math.sqrt(triangulinho)) / (2 * a);
+	const x2 = (-b - Math.sqrt(triangulinho)) / (2 * a);
+  
+	return [Math.min(x1, x2), Math.max(x1, x2)];
 }
 
 // EXERCÍCIO 24.
