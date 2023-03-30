@@ -251,7 +251,47 @@ function abreviadorNomes(nomeCompleto) {
  * @return {boolean} Verdadeiro se a data for válida, falso em caso contrário.
  */
 function dataValida(data) {
-	naoFizIssoAinda();
+	const dataa = data.trim();
+	const [dia, mes, ano] = dataa.split('/');
+
+  // Verificando se todos os campos foram preenchidos com 2 dígitos
+	if (dia.length !== 2 || mes.length !== 2 || ano.length !== 4) {
+		return false;
+	}
+	
+	
+	const diaInt = parseInt(dia);
+	const mesInt = parseInt(mes);
+	const anoInt = parseInt(ano);
+	
+	if(anoInt==0){
+		return false;
+	}
+
+	const bissexto = (anoInt % 4 === 0 && anoInt % 100 !== 0) || anoInt % 400 === 0;
+
+
+	if (mesInt < 1 || mesInt > 12) {
+		return false;
+	}
+
+	if (diaInt < 1 || diaInt > 31) {
+		return false;
+	} 
+	else{ 
+		if ([4, 6, 9, 11].includes(mesInt) && diaInt > 30) {
+			return false;
+		} 
+		else{
+			if (mesInt === 2 && ((bissexto && diaInt > 29) || (!bissexto && diaInt > 28))) {
+				return false;
+			}
+			else{
+				return true;
+			}
+		}
+	}
+
 }
 
 // EXERCÍCIO 7.
