@@ -166,7 +166,20 @@ function operacoesBasicas(operacao, numero1, numero2) {
  * @return {string} A mensagem com o resultado da comparação.
  */
 function comparadorBasico(elemento1, elemento2) {
-    naoFizIssoAinda();
+	const tipo1 = determinarTipo(elemento1);
+	const tipo2 = determinarTipo(elemento2);
+
+	if (elemento1 === elemento2) {
+		return `Elemento ${elemento1} (${tipo1}) é estritamente igual ao elemento ${elemento2} (${tipo2}).`;
+	} 
+	else{
+		if (elemento1 == elemento2) {
+			return `Elemento ${elemento1} (${tipo1}) é equivalente ao elemento ${elemento2} (${tipo2}).`;
+		} 
+		else {
+			return `Elemento ${elemento1} (${tipo1}) é diferente do elemento ${elemento2} (${tipo2}).`;
+		}
+	}
 }
 
 // EXERCÍCIO 4.
