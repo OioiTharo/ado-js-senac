@@ -314,7 +314,19 @@ function dataValida(data) {
  * @return {string} Data no formato "Dia de Nome-do-Mês-por-Extenso de Ano" ou "Data inválida".
  */
 function converteDataParaFormaCompleta(data) {
-	naoFizIssoAinda();
+
+	const meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril','Maio', 'Junho', 'Julho', 'Agosto','Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+
+	if (!dataValida(data)) {
+		return 'Data inválida';
+	}
+
+	const [dia, mes, ano] = data.split('/');
+	const mesInt = parseInt(mes) - 1;
+	const nomeMes = meses[mesInt];
+	const anoInt = parseInt(ano);
+
+	return `${dia} de ${nomeMes} de ${anoInt}`;
 }
 
 // EXERCÍCIO 8.
