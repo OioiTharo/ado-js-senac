@@ -653,7 +653,14 @@ function distribuirCartas(baralho, jogadores) {
  * @return {string|undefined} O nome do jogador com o ás de ouros ou undefined se ninguém tiver o ás de ouros.
  */
 function asDeOuros(jogadores) {
-    naoFizIssoAinda();
+    for (let jogador of jogadores) {
+		for (let carta of jogador.cartas) {
+			if (carta === "A-♢") {
+				return jogador.nome;
+			}
+		}
+	}
+	return undefined;
 }
 
 // EXERCÍCIO 20.
@@ -667,7 +674,8 @@ function asDeOuros(jogadores) {
  * @return {boolean} Verdadeiro se todos tiverem alguma carta real na mão, falso se algum não tiver.
  */
 function todosTemCartasReais(jogadores) {
-    naoFizIssoAinda();
+    const cartasReais = new Set(["J", "Q", "K"]);
+	return jogadores.every(jogador => jogador.cartas.some(carta => cartasReais.has(carta[0])));
 }
 
 // EXERCÍCIO 21.
@@ -682,7 +690,21 @@ function todosTemCartasReais(jogadores) {
  * @return {boolean} Verdadeiro se houverem pelo menos 3 cartas com o mesmo valor na mão, falso em caso contrário.
  */
 function existeTrinca(cartas) {
-    naoFizIssoAinda();
+    const contagem = {};
+	for (let carta of cartas) {
+		const valor = carta.split('-')[0];
+		if (!contagem[valor]) {
+			contagem[valor] = 1;
+		} 
+		else {
+			contagem[valor]++;
+		}
+		
+		if (contagem[valor] === 3) {
+			return true;
+		}
+	}
+	return false;
 }
 
 // EXERCÍCIO 22.
@@ -702,7 +724,17 @@ function existeTrinca(cartas) {
  * @return {Object} Um objeto onde as chaves são palavras da frase e os valores são o número de ocorrências na frase.
  */
 function contarPalavras(frase) {
-    naoFizIssoAinda();
+    const palavras = obterPalavras(frase.toLowerCase());
+	const contagem = {};
+	for (let palavra of palavras) {
+		if (contagem[palavra]) {
+			contagem[palavra]++;
+		} 
+		else {
+			contagem[palavra] = 1;
+		}
+	}
+	return contagem;
 }
 
 // EXERCÍCIO 23.
