@@ -633,7 +633,14 @@ function verificarTriangulo() {
  * @param {Object[]} jogadores Um array com os jogadores que devem receber as cartas.
  */
 function distribuirCartas(baralho, jogadores) {
-    naoFizIssoAinda();
+    const carta = ["K-♠", "Q-♠", "J-♠", "10-♠", "9-♠", "8-♠", "7-♠", "6-♠", "5-♠", "4-♠", "3-♠", "2-♠", "A-♠", "K-♡", "Q-♡", "J-♡", "10-♡", "9-♡", "8-♡", "7-♡", "6-♡", "5-♡", "4-♡", "3-♡", "2-♡", "A-♡", "K-♣", "Q-♣", "J-♣", "10-♣", "9-♣", "8-♣", "7-♣", "6-♣", "5-♣", "4-♣", "3-♣", "2-♣", "A-♣", "K-♢", "Q-♢", "J-♢", "10-♢", "9-♢", "8-♢", "7-♢", "6-♢", "5-♢", "4-♢", "3-♢", "2-♢", "A-♢"]; 
+	
+	for (let i = 0; i < 5; i++) {
+        for (let j = 0; j < jogadores.length; j++) {
+            const carta = baralho.shift();
+            jogadores[j].cartas.push(carta);
+        }
+    }
 }
 
 // EXERCÍCIO 19.
