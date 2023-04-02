@@ -324,7 +324,9 @@ function converteDataParaFormaCompleta(data) {
 	const [dia, mes, ano] = data.split('/');
 	const mesInt = parseInt(mes) - 1;
 	const nomeMes = meses[mesInt];
-	const anoInt = parseInt(ano);
+	const anoStr = ano.toString().padStart(4, '0');
+	const anoInt = parseInt(anoStr);
+	
 
 	return `${dia} de ${nomeMes} de ${anoInt}`;
 }
@@ -660,7 +662,7 @@ function asDeOuros(jogadores) {
 			}
 		}
 	}
-	return undefined;
+	return null;
 }
 
 // EXERCÍCIO 20.
@@ -786,7 +788,34 @@ function bhaskara(a, b, c) {
  * @return {string[]} Um array com os times na ordem de classificação, do campeão ao lanterna.
  */
 function classificacao(times) {
-    naoFizIssoAinda();
+	const timesArray = Object.entries(times);
+
+	timesArray.sort(([, timeA], [, timeB]) => {
+		const pontosA = timeA.vitorias * 3 + timeA.empates;
+		const pontosB = timeB.vitorias * 3 + timeB.empates;
+		if (pontosA !== pontosB) {
+		return pontosB - pontosA;
+		}
+	
+		const saldoA = timeA["saldo-de-gols"];
+		const saldoB = timeB["saldo-de-gols"];
+		if (saldoA !== saldoB) {
+			return saldoB - saldoA;
+		}
+
+		const nomeA = timeA.nome;
+		const nomeB = timeB.nome;
+		if (nomeA < nomeB) {
+			return -1;
+		} 
+		else if (nomeA > nomeB) {
+			return 1;
+		} 
+		else {
+			return 0;
+		}
+	});
+	return timesArray.map(([nome]) => nome).reverse();
 }
 
 // EXERCÍCIO 25.
@@ -797,14 +826,25 @@ function classificacao(times) {
  * fornecidas. Lembrando que o primeiro elemento tem o índice 0, o segundo o índice 1, o terceiro o índice 2 e assim
  * por diante.
  *
- * Leia atentamente todos os enunciados aqui e no GitHub para saber quais são as opções corretas, principalmente o
- * README.md.
- *
- * Dica: Use o console.log para ver o que é recebido no array.
+ * Com base nas opções fornecidas, as opções corretas de entrega seriam:
+
+"Eu vou entregar o meu arquivo ado1.js que eu alterei e nada mais."
+"Eu vou fazer no Git e enviar o link para o professor."
+
  *
  * @param {string[]} array Várias possibilidades de como fazer a entrega deste AC.
  * @return {string[]} As opções corretas de entrega.
  */
 function comoFazerEntrega(array) {
-    naoFizIssoAinda();
+	const opcao1Index = array.findIndex((opcao) =>
+		opcao.includes("Eu vou entregar o meu arquivo ado1.js que eu alterei e nada mais.")
+	);
+  
+	const opcao2Index = array.findIndex((opcao) =>
+		opcao.includes("Eu vou fazer no Git e enviar o link para o professor.")
+	);
+  
+	const indexes = [opcao1Index, opcao2Index];
+	indexes.sort((a, b) => a - b);  
+	return indexes;
 }
