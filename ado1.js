@@ -792,27 +792,38 @@ function classificacao(times) {
 		const pontosA = timeA.vitorias * 3 + timeA.empates;
 		const pontosB = timeB.vitorias * 3 + timeB.empates;
 		if (pontosA !== pontosB) {
-		return pontosB - pontosA;
+			return pontosB - pontosA;
 		}
-	
+
 		const saldoA = timeA["saldo-de-gols"];
 		const saldoB = timeB["saldo-de-gols"];
 		if (saldoA !== saldoB) {
 			return saldoB - saldoA;
 		}
 
+		const empatesA = timeA.empates;
+		const empatesB = timeB.empates;
+		if (empatesA !== empatesB) {
+			return empatesA - empatesB;
+		}
+
+		const derrotasA = timeA.derrotas;
+		const derrotasB = timeB.derrotas;
+		if (derrotasA !== derrotasB) {
+			return derrotasA - derrotasB;
+		}
+
 		const nomeA = timeA.nome;
 		const nomeB = timeB.nome;
 		if (nomeA < nomeB) {
 			return -1;
-		} 
-		else if (nomeA > nomeB) {
+		} else if (nomeA > nomeB) {
 			return 1;
-		} 
-		else {
+		} else {
 			return 0;
 		}
 	});
+
 	return timesArray.map(([nome]) => nome).reverse();
 }
 
