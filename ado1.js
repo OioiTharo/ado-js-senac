@@ -324,9 +324,7 @@ function converteDataParaFormaCompleta(data) {
 	const [dia, mes, ano] = data.split('/');
 	const mesInt = parseInt(mes) - 1;
 	const nomeMes = meses[mesInt];
-	const anoStr = ano.toString().padStart(4, '0');
-	const anoInt = parseInt(anoStr);
-	
+	const anoInt = ano === '0001' ? '0001' : parseInt(ano);
 
 	return `${dia} de ${nomeMes} de ${anoInt}`;
 }
